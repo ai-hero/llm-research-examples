@@ -1,0 +1,52 @@
+project:
+  name: "mmlu"
+
+task: "completion"
+
+dataset:
+  name: "fine-tuning-research/mmlu"
+  type: "s3"
+  task: "completion"
+
+base:
+  type: "huggingface"
+  name: "meta-llama/Llama-2-7b-hf"
+
+output:
+  type: "huggingface"
+  name: "rparundekar/llama2-7b-mmlu"
+
+trainer:
+  packing: false
+  max_seq_length: 512
+
+sft:
+  per_device_train_batch_size: 24
+  per_device_eval_batch_size: 24
+  learning_rate: 0.0002
+  lr_scheduler_type: "cosine"
+  warmup_ratio: 0.1
+  max_steps: 500
+  gradient_accumulation_steps: 4
+  gradient_checkpointing: true
+  logging_strategy: "steps"
+  logging_steps: 5
+  evaluation_strategy: "steps"
+  eval_steps: 100
+  fp16: false  # Assuming default False as not specified
+
+peft:
+  r: 64
+  lora_alpha: 16
+  lora_dropout: 0.1
+  bias: "none"
+  task_type: "CAUSAL_LM"
+  target_modules:
+    - "q_proj"
+    - "k_proj"
+    - "v_proj"
+    - "o_proj"
+    - "gate_proj"
+    - "up_proj"
+    - "down_proj"
+    - "lm_head"

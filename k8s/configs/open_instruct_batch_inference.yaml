@@ -1,0 +1,17 @@
+project:
+  name: "open-instruct"
+
+task: "completion"
+
+dataset:
+  name: "fine-tuning-research/open-instruct-inference"
+  type: "s3"
+  task: "completion"
+
+model:
+  name: "meta-llama/Llama-2-7b-hf"
+  type: "huggingface"
+
+generator:
+  packing: false
+  max_seq_length: 512

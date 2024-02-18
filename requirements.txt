@@ -1,0 +1,10 @@
+aihero-research-config @ git+https://github.com/ai-hero/llm-research-config.git@main#egg=aihero-research-config
+aihero-research-finetuning @ git+https://github.com/ai-hero/llm-research-fine-tuning.git@main#egg=aihero-research-finetuning
+aihero-research-orchestration @ git+https://github.com/ai-hero/llm-research-orchestration.git@main#egg=aihero-research-orchestration
+python-dotenv
+jinja2
+kubernetes
+codenamize
+streamlit
+huggingface-hub
+markdown
